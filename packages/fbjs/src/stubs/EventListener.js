@@ -27,6 +27,9 @@ var EventListener = {
    */
   listen: function(target, eventType, callback) {
     if (target.addEventListener) {
+      if (target.nodeName === '#document') {
+        console.log('fbjs EventListener adding document listener for eventType=' + eventType);
+      }
       target.addEventListener(eventType, callback, false);
       return {
         remove: function() {
